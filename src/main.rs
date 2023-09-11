@@ -140,29 +140,8 @@ fn task3(){
         io::stdin()
             .read_line(&mut input)
             .expect("Failed to read input");     
-/* 
-        match input.split_whitespace().nth(0) {
-            Some(startword) => { match startword {
-                "add" => { match input.split_whitespace().nth(1) {
-                        Some(employee_name) => {
-                            println!("employee name: {}", employee_name);
-
-                        }
-                        _ => println!("please enter employee name as 2nd argument"),
-                    }
-                        //employee_map.entry(key)
-                        //modemap.entry(*element).and_modify(|e| *e=*e+1).or_insert(0);
-                },
-                "display" =>println!("{startword} starts with display"),
-                "quit" => break,
-                _ => println!("{startword} isn't valid input, valid inputs begin with add, display or quit"), 
-            }
-            }
-            _ => println!("Please enter text"),
-        }
-*/
-        let input_parts: Vec<&str> = input.split_whitespace().collect();
-        match  input_parts.as_slice(){
+        
+        match  input.split_whitespace().collect::<Vec<&str>>().as_slice(){
             ["add", name, "to", department] => {
                 println!("name = {}, department = {}",name, department);
                 employee_map.entry(department.to_string()).and_modify(|list| list.push(name.to_string())).or_insert(vec![name.to_string()]);
@@ -171,15 +150,11 @@ fn task3(){
                 for (department, names) in &employee_map {
                     println!("department: {}, employees: {:?}",department,names);
                 }
-                
             },
+            ["quit"] => break,
             _ => println!("Please enter text"),
         }
     }
-
-    
-
-
 }
 
 fn main() {
