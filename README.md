@@ -1,0 +1,1 @@
+A Rust project where I attempted to solve the collection exercises listed in the The Rust Programming Language, an introductory book about Rust found here: https://doc.rust-lang.org/book/ch08-03-hash-maps.html#summary
